@@ -1,0 +1,80 @@
+
+
+/* - - - - - - - - - - - - */
+
+
+
+.LogPage{
+    height: 100%;
+    background-color: #212121;
+}
+.LogPage__container{
+    align-items: center;
+}
+.FormBox{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 400px;
+    height: 350px;
+    background-color: #303030;
+    border-radius: 5%;
+    .FormBox__container{
+        max-width: 300px;
+        margin: 0 auto;
+        padding-top: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.FormBox__headline{
+    font-size: 26px;
+    color: white;
+    padding-bottom: 60px;
+}
+.FormBox__label{
+    padding-bottom: 20px;
+    .FormBox__input{
+        width: 100%;
+        height: 50px;
+        background-color: #212121;
+        border-radius: 17px;
+        padding-left: 15px;
+        font-size: 18px;
+        color: #515151;
+        border: transparent 2px solid;
+        cursor: text;
+
+        transition: all 0.2s;
+
+        &:focus{
+            outline: 0;
+            border: #8774e1 2px solid;
+        }
+        &.error{
+            border: #e17474 2px solid;
+        }
+    }
+}
+.FormBox__button{
+    font-size: 18px;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: white;
+    background-color: #8774e1;
+
+    transition: all 0.4s;
+    &:hover{
+        color: white;
+        background-color: #554991;
+    }
+}
