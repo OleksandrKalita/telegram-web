@@ -19,7 +19,7 @@
     right: 0;
     margin: auto;
     width: 400px;
-    height: 350px;
+    max-height: 350px;
     background-color: #303030;
     border-radius: 5%;
     .FormBox__container{
@@ -39,14 +39,22 @@
 }
 .FormBox__label{
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    align-items: center;
+    .password-switcher{
+        font-size: 18px;
+        color: rgb(206, 206, 206);
+    }
     .FormBox__input{
         width: 100%;
         height: 50px;
         background-color: #212121;
         border-radius: 17px;
         padding-left: 15px;
-        font-size: 18px;
-        color: #515151;
+        font-size: 17px;
+        color: #747574;
         border: transparent 2px solid;
         cursor: text;
 
@@ -54,12 +62,19 @@
 
         &:focus{
             outline: 0;
-            border: #8774e1 2px solid;
+            // border: #8774e1 2px solid;
+            border: #6a5cb4 2px solid;
         }
         &.error{
             border: #e17474 2px solid;
         }
     }
+}
+.password-notes{
+    color: #a6a6a6;
+    font-size: 12px;
+    margin-top: -15px;
+    // padding-right: 45px;
 }
 .FormBox__button{
     font-size: 18px;
@@ -70,11 +85,13 @@
     border-radius: 10px;
     margin-top: 15px;
     color: white;
-    background-color: #8774e1;
+    // background-color: #8774e1;
+    background-color: #6a5cb4;
+
 
     transition: all 0.4s;
     &:hover{
-        color: white;
+        color: rgb(216, 216, 216);
         background-color: #554991;
     }
 }
