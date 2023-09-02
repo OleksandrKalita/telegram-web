@@ -10,14 +10,14 @@ export function openDatabase():Promise<IDBDatabase> {
         }
         request.onupgradeneeded = () => {
             const db = request.result;
-            const usersStore = db.createObjectStore("Users", {keyPath: "UserId", autoIncrement: true})
-            const privateDataStore = db.createObjectStore("PrivateData", {keyPath: "Email", autoIncrement: false})
+            const usersStore = db.createObjectStore("Users", {keyPath: "id", autoIncrement: true})
+            const privateDataStore = db.createObjectStore("PrivateData", {keyPath: "id", autoIncrement: true})
 
-            usersStore.createIndex("user_id", ["UserId"], {unique: false})
-            usersStore.createIndex("user_email", ["Email"], {unique: false})
-            usersStore.createIndex("user_name", ["Username"], {unique: false})
+            usersStore.createIndex("id_IDX", "UserId", {unique: false})
+            usersStore.createIndex("email_IDX", "Email", {unique: false})
+            usersStore.createIndex("username_IDX", "Username", {unique: false})
 
-            privateDataStore.createIndex("email", ["Email"],{unique: false})
+            privateDataStore.createIndex("email_IDX", "Email",{unique: false})
         }
     })
 }

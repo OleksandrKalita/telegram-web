@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RegistrationProps } from "../../types/authenticationTypes";
-import { isCorrectLoginData } from "../../async/loginFunc";
+import { LoginDataProps } from "../../types/authenticationTypes";
+import { isCorrectLoginData } from "../../async/loginFunction";
 
 export function LoginPage() {
     const navigate = useNavigate();
@@ -56,20 +56,16 @@ export function LoginPage() {
         setEmailError(false);
         setPasswordError(false);
 
-        const Data: RegistrationProps = {
+        const Data: LoginDataProps = {
             email,
             password,
         }
 
         isCorrectLoginData(Data)
-        .then(data => {
-            if(data) {
-                
-                navigate("/")
-            }else {
-                setEmailError(true);
-                setPasswordError(true);
-            }
+        .then(data => navigate("/"))
+        .catch(error => {
+            setEmailError(true);
+            setPasswordError(true);
         })
     }
     return (

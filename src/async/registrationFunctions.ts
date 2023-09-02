@@ -1,22 +1,23 @@
-import { NewUserProps, PrivateUserProps, RegistrationProps } from "../types/authenticationTypes";
+import { NewUserProps, PrivateDataProps, RegistrationDataProps } from "../types/authenticationTypes";
 import { openDatabase } from "./openDatabase";
 
-export function RegistrationNewUser(data: RegistrationProps) {
-    RegUserRequest(data.email);
+
+export function RegistrationNewUser(data: RegistrationDataProps) {
+    RegUserRequest(data);
     RegPrivatDataRequest(data);
 }
-async function RegUserRequest(email: string): Promise<any> {
+async function RegUserRequest(data: RegistrationDataProps): Promise<any> {
     try{
         const db = await openDatabase()
         const transaction = db.transaction("Users", "readwrite");
         const store = transaction.objectStore("Users");
 
         const newUser: NewUserProps = {
-            UserId: 1,
+            UserId: data.userId,
             FirstName: undefined,
             LastName: undefined,
             Username: undefined,
-            Email: email,
+            Email: data.email,
             Bio: undefined,
             Avatar: "../img/starterPhoto.png",
             Theme: "dark",
@@ -36,13 +37,13 @@ async function RegUserRequest(email: string): Promise<any> {
         console.error("Error - ->" + error);
     }
 }
-async function RegPrivatDataRequest(data: RegistrationProps):Promise<any> {
+async function RegPrivatDataRequest(data: RegistrationDataProps):Promise<any> {
     try{
         const db = await openDatabase();
         const transaction = db.transaction("PrivateData", "readwrite");
         const store = transaction.objectStore("PrivateData");
 
-        const newPrivateObject: PrivateUserProps = { Email: data.email, Password: data.password}
+        const newPrivateObject: PrivateDataProps = { UserId: data.userId, Email: data.email, Password: data.password}
         store.put(newPrivateObject);
 
         transaction.oncomplete = () => {

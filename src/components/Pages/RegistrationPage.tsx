@@ -1,7 +1,21 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { RegistrationNewUser } from "../../async/regFunc";
-import { RegistrationProps } from "../../types/authenticationTypes";
+import { RegistrationNewUser } from "../../async/registrationFunctions";
+import { RegistrationDataProps } from "../../types/authenticationTypes";
 import { useNavigate } from "react-router-dom";
+
+function generateUserID() {
+    // Отримуємо поточну дату та час у мілісекундах (timestamp)
+    const timestamp = new Date().getTime();
+    
+    // Додаємо деякий випадковий номер (наприклад, від 0 до 999) для забезпечення унікальності
+    const random = Math.floor(Math.random() * 1000);
+    
+    // Комбінуємо timestamp та випадковий номер
+    const userID = timestamp + random;
+    
+    return userID.toString(); // Повертаємо унікальний ID у вигляді рядка
+}
+
 
 function isValidEmail(email: string) {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}$/;
@@ -84,7 +98,8 @@ export function RegistrationPage() {
             return 0;
         }
 
-        const RegData: RegistrationProps = {
+        const RegData: RegistrationDataProps = {
+            userId: generateUserID(),
             email,
             password,
         }
