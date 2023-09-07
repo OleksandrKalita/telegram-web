@@ -1,3 +1,14 @@
+:root{
+    --background-color-light: white;
+    --background-color-dark: rgb(33, 33, 33);
+    --message-bg-light: rgb(196, 201, 204);
+    --color-gray: rgb(140 140 145);
+    --color-gray-dark: rgb(112,117,121);
+    --color-green: rgb(0 199 62);
+    --color-blue: rgb(51 144 236);
+    --color-primery: rgb(135,116,225);
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -8,6 +19,7 @@ html,
 body{
     height: 100vh;
     overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Apple Color Emoji", "Helvetica Neue", sans-serif;
 }
 
 

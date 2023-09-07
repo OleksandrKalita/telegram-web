@@ -1,7 +1,10 @@
+import { Dispatch } from "react";
 import { LoginDataProps } from "../types/authenticationTypes";
 import { openDatabase } from "./openDatabase"
+import { UserAction, UserActionTypes } from "../types/user";
+import { getUserData } from "./requestsToDB";
 
-export function isCorrectLoginData(data: LoginDataProps):Promise<any> {
+export function isCorrectLoginData(data: LoginDataProps):Promise<boolean> {
     return new Promise(async(resolve, reject) => {
         try{
             const db = await openDatabase();
@@ -19,7 +22,6 @@ export function isCorrectLoginData(data: LoginDataProps):Promise<any> {
             
                 if(result) {
                     if(getRequest.result.Password === data.password) {
-                        localStorage.setItem("user_id", getRequest.result.UserId)
                         resolve(true);
                     }else {
                         reject();
@@ -32,4 +34,22 @@ export function isCorrectLoginData(data: LoginDataProps):Promise<any> {
             console.error("Error - -> " + error)
         }
     })
+}
+
+export function autoLoginFunc(dispatch: Dispatch<UserAction>) {
+    if(localStorage.getItem("user_id") != null) {
+        const UserId: any = localStorage.getItem("user_id");
+        getUserData(UserId)
+        .then(data => {
+            dispatch({type: UserActionTypes.LOG_IN_USER, payload: data});
+        });
+    }else if(sessionStorage.getItem("user_id") != null) {
+        const UserId: any = sessionStorage.getItem("user_id");
+        getUserData(UserId)
+        .then(data => {
+            dispatch({type: UserActionTypes.LOG_IN_USER, payload: data});
+        });
+    }else {
+        console.log(":)");
+    }
 }

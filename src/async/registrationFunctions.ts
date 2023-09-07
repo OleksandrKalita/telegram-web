@@ -19,7 +19,7 @@ async function RegUserRequest(data: RegistrationDataProps): Promise<any> {
             Username: undefined,
             Email: data.email,
             Bio: undefined,
-            Avatar: "../img/starterPhoto.png",
+            Avatar: "../../img/anonymous_image.webp",
             Theme: "dark",
             Language: "English",
         }

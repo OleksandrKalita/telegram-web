@@ -1,0 +1,307 @@
+$background-color-light: white;
+$background-color-dark: rgb(33, 33, 33);
+$color-gray-light: rgb(44,44,44);
+$color-gray-dark: rgb(170,170,170);
+$color-bg-hover-light: rgb(112 117 121 / 8%);
+$color-bg-hover-dark: rgb(170 170 170 / 8%);
+$color-badge: rgb(112,117,121);
+$color-green: rgb(0 199 62);
+$color-blue: rgb(51 144 236);
+$color-primery: rgb(135, 117, 225);
+$color-light-shadow: rgb(0,0,0,0.251);
+
+$transition-hover: all 0.3s ease 0s;
+
+// 56 - 41 - 72
+.left-column{
+    position: absolute;
+    min-width: 424px;
+    max-width: 424px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-right: 1px solid $color-gray-dark;
+    .left-column__container{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+}
+.left-column__top{
+    position: sticky;
+    top: 0;
+}
+.left-column__header{
+    display: flex;
+    height: 56px;
+    align-items: center;
+    background-color: $background-color-dark;
+    &.light-theme{
+        background-color: $background-color-light;
+    }
+    .header__container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+.menu-button{
+    position: relative;
+    display: block;
+    width: 45px;
+    height: 40px;
+    border-radius: 50%;
+    transition: $transition-hover;
+    &:hover{
+        background-color: $color-bg-hover-dark;
+    }
+    &.light-theme{
+        &:hover{
+            background-color: $color-bg-hover-light;
+        }
+    }
+    .dropdown-menu{
+        display: block;
+        position: relative;
+        width: 15px;
+        height: 16px;
+        margin: auto;
+        margin-top: 12px;
+        cursor: pointer;
+        span,
+        &::before,
+        &::after{
+            position: absolute;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            border-radius: 5%;
+            transition: $transition-hover;
+            background-color: $color-gray-dark;
+        }
+        &::before,
+        &::after{
+            content: '';
+        }
+        &::before{
+            top: 0;
+        }
+        &::after{
+            bottom: 0;
+        }
+        span{
+            top: 7px;
+        }
+    }
+}
+.search{
+    position: relative;
+    width: 100%;
+    padding-left: 10px;
+    .search__input{
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+        color: $color-gray-dark;
+        border-radius: 20px;
+        padding-left: 40px;
+        background-color: $color-gray-light;
+        border: $color-gray-light;
+        transition: $transition-hover;
+        &:focus{
+            outline: none;
+        }
+        &.selection{
+            background-color: $background-color-dark;
+            border-color: $color-primery;
+        }
+    }
+    .search__icon{
+        display: block;
+        position: absolute;
+        top: 11px;
+        left: 23px;
+        width: 17px;
+        height: 17px;
+    }
+}
+
+
+
+.left-column__tab-list{
+    width: 100%;
+    overflow: auto;
+    background-color: $background-color-dark;
+    box-shadow: 0 2px 2px $color-light-shadow;
+    &.light-theme{
+        background-color: $background-color-light;
+    }
+    .tab-list__container{
+        display: flex;
+        height: 41px;
+        margin-left: 7px;
+    }
+}
+
+.tab{
+    height: 100%;
+    .tab__container{
+        position: relative;
+        height: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 0 25px 0 25px;
+        transition: $transition-hover;
+        text-align: center;
+        &:hover{
+            background-color: $color-bg-hover-dark;
+        }
+    }
+    .tab__headline{
+        font-size: 14px;
+        padding-top: 12px;
+        color: $color-gray-dark;
+    }
+    .selection-bar{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $color-primery;
+        transition: all 0.3s;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    }
+}
+
+
+
+.chat-list{
+    height: 100%;
+    background-color: $background-color-dark;
+    .chat-list__container{
+        height: 100%;
+        overflow: auto;
+        padding: 10px 1px 0 7px;
+    }
+}
+
+.list-item{
+    height: 72px;
+    width: 100%;
+    .list-item__container{
+        display: flex;
+        flex-direction: row;
+        column-gap: 7px;
+        align-items: center;
+        height: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        border-radius: 13px;
+        transition: $transition-hover;
+        &:hover{
+            background-color: $color-bg-hover-dark;
+        }
+    }
+}
+
+.list-item__avatar{
+    width: 54px;
+    height: 54px;
+    border-radius: 60%;
+}
+.list-item__info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    width: 100%;
+}
+
+.info__row{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    .title{
+        color: white;
+        font-size: 17px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 270px;
+    }
+    .icon-muted{
+        
+    }
+    .separator{
+        flex: 1 1 auto;
+    }
+
+    .last-message-info{
+        display: flex;
+        column-gap: 5px;
+        .last-message-statu{
+            display: flex;
+        }
+        .message-status-icon{
+            width: 14px;
+            height: 14px;
+        }
+        .last-message-time{
+            font-size: 13px;
+            color: $color-gray-dark;
+        }
+    }
+}
+
+
+.subtitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 10px;
+    .last-message-preview{
+        font-size: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 280px;
+        color: $color-gray-dark;
+    }
+    .chat-badge{
+        .chat-badge_pinned{
+
+        }
+        .chat-badge__unread{
+            position: relative;
+            width: 22px;
+            height: 22px;
+            background-color: $color-primery;
+            border-radius: 50%;
+            .unread__counter{
+                font-size: 15px;
+                position: absolute;
+                top: 10%;
+                left: 13%;
+                color: white;
+            }
+        }
+    }
+}
+
+
+/* Ширина скроллбара */
+::-webkit-scrollbar {
+    width: 7px;
+} 
+/* Колір пальця скроллбара (перетягуваний білет) */
+::-webkit-scrollbar-thumb {
+    background-color: #373737; /* Задайте бажаний колір */
+    border-radius: 5px; /* Закруглені кути */
+}
+/* Колір фону скроллбара */
+::-webkit-scrollbar-track {
+    background-color: $background-color-dark /* Задайте бажаний колір */
+}
